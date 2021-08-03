@@ -4,53 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog de note - 9bonus</title>
+    <meta name="Set-Cookie" cross-site-cookie="whatever" SameSite=None; Secure">
+    <title>Agenda</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"></head>
 <body>
-    <div class="container mt-4 border">
-        <div class="row text-center my-4">
-            <div class="col-md-12">
-                <h1 class="title">Catalog de note</h1>
+<div class="container">
+    <div class="row py-4">
+        <div class="col-md-12 text-center">
+            <div class="title">
+                <h1>Agenda</h1>
             </div>
         </div>
-        <div class="row my-4">
-            <div class="col-md-4 offset-md-4">
-                <form action="#" class="">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control addNewStudentInput" placeholder="Adaugati noul student">
-                    </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary addNewStudent">Adauga</button>
-                    </div>
-                </form>
+    </div>
+    <div class="row py-4 formToAddNewContact">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Nume :</label>
+                <input type="text" name="name" id="inputName" class="form-control">
             </div>
         </div>
-        <div class="row mb-4 d-none">
-            <div class="sort-div col-md-12 text-center my-4">
-                <button class="btn btn-primary btn-warning sortAscButton">Sortare crescatoare</button>
-                <button class="btn btn-primary btn-warning sortDescButton">Sortare descrescatoare</button>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="number">Numar :</label>
+                <input type="number" name="number" id="inputNumber" class="form-control">
             </div>
-            <div class="col-md-12">
-                <table id="myTable" class="table">
-                    <thead>
+        </div>
+        <div class="col-md-12">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btnAddNewContact">Adauga contact</button>
+            </div>
+        </div>
+    </div>
+    <div class="row my-4 py-4 phoneBook d-none">
+        <div class="col-md-12">
+            <div class="table-responsive-md">
+                <table class="table table-hover table-bordered mb-0">
+                    <thead class="thead-dark">
                         <tr>
                             <th>Nume</th>
-                            <th>Medie note</th>
-                            <th>Note student</th>
-                            <th>Sterge student</th>
+                            <th>Numar</th>
+                            <th>Actiuni</th>
                         </tr>
                     </thead>
-                    <tbody class="student-list">
+                    <tbody class="tbody-light tBodyList">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script></body>
+</div>
+<script src="app.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
 </html>
