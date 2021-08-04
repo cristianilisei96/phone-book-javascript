@@ -71,7 +71,7 @@ if(result) {
         const appendedItem = list.appendChild(tr);
         inputs[0].value = '';
         inputs[1].value = '';
-        btnAddNewContact.innerText = 'Adauga un contact';
+        btnAddNewContact.innerText = 'Adauga contact';
     } else {
         updateRecord();
     }
@@ -84,7 +84,7 @@ function updateRecord(){
     // console.log('updateRecordfunction');
     selectedRow.cells[0].innerHTML = inputs[0].value;
     selectedRow.cells[1].innerHTML = inputs[1].value;
-    btnAddNewContact.innerText = 'Adauga un contact';
+    btnAddNewContact.innerText = 'Adauga contact';
     inputs[0].value = '';
     inputs[1].value = '';
 }
