@@ -1,5 +1,8 @@
+// get row to be edit
+var selectedRow = null;
+
 // get buttons from DOM
-const addNewContact = document.querySelector('button.btnAddNewContact');
+const btnAddNewContact = document.querySelector('button.btnAddNewContact');
 const phoneBook = document.querySelector('.phoneBook');
 const list = document.querySelector('.tBodyList');
 const inputs = [
@@ -13,7 +16,7 @@ inputs.forEach((input) => {
     input.addEventListener('input', handler);
     input.addEventListener('keypress', submitOnEnterKey);
 })
-addNewContact.addEventListener('click', addNewContactFunction);
+btnAddNewContact.addEventListener('click', addNewContactFunction);
 
 function checkLength(target) {
     return !!target.value;
@@ -49,38 +52,54 @@ function validate(target) {
 }
 
 function addNewContactFunction(e){
-    const result = inputs.map((input) => validate(input)).every((val) => val);
 
-    if(result) {
+const result = inputs.map((input) => validate(input)).every((val) => val);
+
+if(result) {
+    if(selectedRow ==null) {
         const tr = document.createElement('tr');
+            
         tr.classList.add('newTr');
         tr.innerHTML = 
-            "<td>" + inputs[0].value + "</td>" + 
-            "<td>" + inputs[1].value + "</td>" + 
-            "<td class='text-nowrap'><button onclick='editContact(event)' class='btn btn-warning'>Editeaza</button>" + 
-            "<button onclick='deleteContact(event)' class='btn btn-danger btnDeleteNewContact'>Sterge</button></td>";
+        "<td>" + inputs[0].value + "</td>" + 
+        "<td>" + inputs[1].value + "</td>" + 
+        "<td class='text-nowrap'>" + 
+        "<button onclick='onEdit(this)' class='btn btn-warning'>Editeaza</button>" + 
+        "<button onclick='deleteContactFunction(event)' class='btn btn-danger btnDeleteNewContact'>Sterge</button>" +
+        "</td>";
         phoneBook.classList.add('d-block');
         const appendedItem = list.appendChild(tr);
         inputs[0].value = '';
         inputs[1].value = '';
+        btnAddNewContact.innerText = 'Adauga un contact';
     } else {
-
+        updateRecord();
     }
+} else {
+}
     e.preventDefault();
 }
 
-function editContact(){
-    const contactToBeEdit = event.target.parentElement.parentElement.children[0].innerText;
-    const numberToBeEdit = event.target.parentElement.parentElement.children[1].innerText;
-    // console.log(contactToBeEdit);
-    // console.log(numberToBeEdit);
-    inputs[0].value = contactToBeEdit;
-    inputs[1].value = numberToBeEdit;
-    addNewContact.innerText = 'Actualizeaza';
-
+function updateRecord(){
+    // console.log('updateRecordfunction');
+    selectedRow.cells[0].innerHTML = inputs[0].value;
+    selectedRow.cells[1].innerHTML = inputs[1].value;
+    btnAddNewContact.innerText = 'Adauga un contact';
+    inputs[0].value = '';
+    inputs[1].value = '';
 }
 
-function deleteContact(){
+function onEdit(td){
+    // console.log(td.parentElement.parentElement)
+    selectedRow = td.parentElement.parentElement;
+    const contactToBeEdit = event.target.parentElement.parentElement.children[0].innerText;
+    const numberToBeEdit = event.target.parentElement.parentElement.children[1].innerText;
+    inputs[0].value = contactToBeEdit;
+    inputs[1].value = numberToBeEdit;
+    btnAddNewContact.innerText = 'Actualizeaza';
+}
+
+function deleteContactFunction(){
     // console.log(event.target.parentElement.parentElement);
     const contactToBeRemoved = event.target.parentElement.parentElement;
     list.removeChild(contactToBeRemoved);
